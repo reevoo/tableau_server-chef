@@ -1,0 +1,8 @@
+@ECHO OFF
+cd "C:\Program Files\Tableau\Tableau Server\<%= node.tableau_server['version'] %>\bin\" || exit /b
+tabadmin backup -d "C:\Program Files\Tableau\Backups\tableau" || exit /b
+SET AWS_ACCESS_KEY_ID=<%= @aws_access_key_id %>
+SET AWS_SECRET_ACCESS_KEY=<%= @aws_secret_access_key %>
+SET AWS_DEFAULT_REGION=<%= node.tableau_server['backup']['aws']['region'] %>
+aws s3 sync "C:\Program Files\Tableau\Backups" s3://<%= node.tableau_server['backup']['aws']['s3_bucket'] %> || exit /b
+del /f /q C:\Program Files\Tableau\Backups\tableau*
