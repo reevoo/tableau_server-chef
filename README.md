@@ -1,5 +1,7 @@
 tableau_server Cookbook
 ================
+[![Build Status](https://travis-ci.org/reevoo/tableau_server-chef.svg?branch=master)](https://travis-ci.org/reevoo/tableau_server-chef)
+
 Installs Tableau Server
 
 Usage
